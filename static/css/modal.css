@@ -1,0 +1,35 @@
+.modal {
+  position: absolute;
+  width: 0px;
+  height: 10%;
+  top: 40%;
+  left: -1%;
+  background-color: white;
+  color: #1C82AD;
+  font-size: 2rem;
+  border-radius: 0.5rem;
+}
+.modal.animate {
+  position: absolute;
+  width: 0px;
+  height: 10%;
+  top: 40%;
+  left: -1%;
+  background-color: white;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  display: block;
+  animation: styleinAndOut 6s ease forwards;
+}
+@keyframes styleinAndOut {
+  from {
+    width: 300px;
+  }
+  to {
+    transform: translateX(-600px);
+    opacity: 0;
+  }
+}
+.modal h3 {
+  text-align: center;
+}/*# sourceMappingURL=modal.css.map */

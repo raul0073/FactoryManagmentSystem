@@ -1,0 +1,764 @@
+// web colors and variables
+$webGreen: #03C988;
+$webSecondaryLightBlue: #1C82AD;
+$webBlue: #00337C;
+$webDarkBlue: #13005A;
+
+// general settings -----------------------------------------------------
+*,
+*::after,
+*::before {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'calibri';
+    font-size: 20px;
+}
+
+body {
+    background-image: url("../images/blurry-gradient-bg.png");
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+
+    h2 {
+        color: white;
+        font-size: 1.2rem;
+        letter-spacing: .1rem;
+        border-bottom: .1px solid $webSecondaryLightBlue;
+    }
+
+    .alertMsg {
+
+        position: absolute;
+        left: 30%;
+        top: 35%;
+        padding: 1rem;
+        border-radius: .2rem;
+        width: 600px;
+        height: 5vh;
+        background-color: rgb(255, 159, 159);
+        color: white;
+        font-weight: 800;
+        text-align: center;
+        opacity: 0;
+
+        &.active {
+            animation: fadeInOut 6s ease-in-out forwards;
+
+            @keyframes fadeInOut {
+                from {
+                    opacity: 1;
+                }
+
+                to {
+                    opacity: 0;
+                }
+            }
+        }
+    }
+
+    button {
+        padding: .5rem;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        border-radius: .4rem;
+
+        &:hover {
+            background-color: $webGreen;
+            box-shadow: inset 0px 0px 10px $webGreen;
+        }
+    }
+
+    .tableBtn {
+        padding: .3rem;
+        margin: .4rem;
+        font-size: .7rem;
+        cursor: pointer;
+
+        &Edit {
+            padding: .3rem;
+            background-color: transparent;
+            margin: .4rem;
+            font-size: .8rem;
+            cursor: pointer;
+
+            &:hover {
+                background-color: transparent;
+                box-shadow: none !important;
+                color: white;
+
+                &::after {
+                    background-color: #23579f;
+                    color: white;
+                    font-size: .7rem;
+                    content: "Edit";
+                    padding: .1rem;
+                    margin: -1.5rem;
+                    width: calc(fit-content + 30%);
+                    position: absolute;
+                    border-radius: .2rem;
+                }
+            }
+        }
+
+
+        &Delete {
+            padding: .3rem;
+            background-color: transparent;
+            margin: .4rem;
+            font-size: .8rem;
+            cursor: pointer;
+
+            &:hover {
+                background-color: transparent;
+                box-shadow: none !important;
+                color: red;
+
+                &::after {
+                    background-color: #9f6323;
+                    color: white;
+                    font-size: .7rem;
+                    content: "Delete";
+                    padding: .1rem;
+                    margin: -1.5rem;
+                    width: calc(fit-content + 30%);
+                    position: absolute;
+                    border-radius: .2rem;
+                }
+            }
+        }
+
+        &Add {
+            padding: .3rem;
+            background-color: transparent;
+            margin: .4rem;
+            font-size: .8rem;
+            width: 80%;
+            cursor: pointer;
+
+            &:hover {
+                background-color: transparent;
+                box-shadow: none;
+                color: white;
+
+                &::after {
+                    background-color: #23579f;
+                    color: white;
+                    font-size: .7rem;
+                    content: "Add Shift";
+                    padding: .1rem;
+                    margin: -1.5rem;
+                    position: absolute;
+                    border-radius: .2rem;
+                }
+            }
+        }
+    }
+}
+
+// ------------------------------------------- general settings ENDS ----------------------------------- \\
+
+
+// ---------------- login page ---------------- \\
+.main {
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+    margin-top: 2rem;
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .title {
+        font-size: 4rem;
+        color: $webGreen;
+    }
+
+    .date-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 900px;
+        margin: 2rem auto;
+        padding: 0 .5rem;
+        border: .3px solid rgba(201, 201, 201, 0.561);
+        border-radius: .2rem;
+        background-color: #ffffff67;
+        height: 50vh;
+        backdrop-filter: blur(10px);
+        height: fit-content;
+
+        a {
+            color: white;
+        }
+
+        i {
+            color: white;
+
+            &:first-child::after {
+                content: " in session ";
+                color: white;
+            }
+
+            &.date {
+                font-size: .8rem;
+                color: #515151;
+            }
+        }
+
+
+        #logout {
+            cursor: pointer;
+            background-color: transparent;
+            color: white;
+
+            &:hover {
+                transform: scale(.98);
+                border: none;
+                box-shadow: none;
+                color: rgb(153, 25, 25);
+            }
+        }
+    }
+
+    .container-flex {
+        display: flex;
+        justify-content: space-between;
+        width: 900px;
+        margin: 2rem auto;
+        border: .3px solid rgba(201, 201, 201, 0.561);
+        border-radius: .2rem;
+        background-color: #d2d2d27b;
+        backdrop-filter: blur(10px);
+        max-height: fit-content;
+        transition: .3s ease;
+        box-shadow: 0px 0px 10px #d2d2d27b;
+        padding: 1rem;
+
+        &.data {
+            justify-content: center;
+
+            div#piechart {
+                width: 800px;
+                margin: 0 auto;
+            }
+        }
+
+        &.EmpPage {
+            overflow-y: scroll;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            width: 900px;
+            margin: .5rem auto;
+            border: .3px solid rgba(201, 201, 201, 0.561);
+            border-radius: .2rem;
+            background-color: #d2d2d27b;
+            height: 60vh;
+            backdrop-filter: blur(10px);
+            transition: .3s ease;
+            box-shadow: 0px 0px 10px #d2d2d27b;
+            padding: 1rem;
+        }
+
+
+        animation: pop .4s ease-in-out forwards;
+
+        @keyframes pop {
+            from {
+                opacity: 0;
+                transform: scale(0);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        &home {
+            background-color: transparent;
+            display: flex;
+            justify-content: space-between;
+            width: 900px;
+            margin: 2rem auto;
+            border-radius: .2rem;
+            height: 50vh;
+            backdrop-filter: blur(10px);
+            height: 300px;
+            transition: .3s ease;
+        }
+
+        &.edit {
+            width: fit-content;
+        }
+
+        h2 {
+            color: white;
+            font-size: 1.5rem;
+            margin: .5rem;
+        }
+
+        .login-container {
+            padding: 2rem 0;
+            margin: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+
+            h2 {
+                color: white;
+            }
+
+            .date {
+                font-size: .8rem;
+                color: #515151
+            }
+
+            input {
+                border: none;
+                border-radius: .1rem;
+                padding: .3rem;
+                margin: .5rem;
+            }
+
+            button {
+                margin-top: 1rem;
+                padding: .5rem;
+                width: 90%;
+                cursor: pointer;
+                outline: none;
+                border-radius: 1rem;
+
+                &:hover {
+                    background-color: $webGreen;
+                }
+            }
+
+        }
+
+        .art-container {
+            width: 400px;
+            display: flex;
+            align-items: end;
+
+
+            svg {
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+
+    .searchbar {
+        position: relative;
+        display: flex;
+        padding: 0 .5rem;
+        height: fit-content;
+        justify-content: space-around;
+        width: 100%;
+        margin: .7rem auto;
+        background-color: transparent;
+
+        a#export {
+            cursor: pointer;
+
+            &:hover,
+            i {
+                color: $webGreen;
+                box-shadow: none;
+            }
+        }
+
+
+        button {
+            cursor: pointer;
+            background-color: transparent;
+            color: white;
+            margin-left: -6rem;
+
+            &:hover,
+            i {
+                color: $webGreen;
+                box-shadow: none;
+            }
+        }
+
+        input {
+            outline: none;
+            color: white;
+            border: none;
+            padding: .5rem;
+            width: 70%;
+            background-color: transparent;
+            border-bottom: .5px solid white;
+        }
+
+    }
+}
+
+// --------------------------------- END login page --------------------------------\\
+
+// -------------------------------- home page -------------------------------- \\
+
+.linkBox {
+    height: 100%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    place-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    font-size: 1.7rem;
+    transition: .2s ease;
+
+    a {
+        font-family: 'calibri';
+    }
+
+    &:hover {
+        transform: scale(.99);
+        background-color: #ffffff67;
+        border-radius: .5rem;
+
+        .art {
+            color: $webSecondaryLightBlue;
+            filter: saturate(1.2);
+        }
+    }
+
+    .art {
+        color: $webSecondaryLightBlue;
+        font-size: 2rem;
+        margin: 1rem;
+        background-color: #ffffff67;
+        border: .5px solid #d2d2d27b;
+        padding: 1rem;
+        width: 60%;
+        border-radius: .2rem;
+        box-shadow: 0px 0px 5px black;
+    }
+
+}
+
+
+// --------------------------------------------------- department page -------------------------------- \\
+
+
+
+.showTable {
+    width: 800px;
+    margin: 0 auto;
+
+    .tableActions-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        #filter {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            color: white;
+            border-bottom: .5px solid white;
+
+            option {
+                color: grey;
+                font-size: .9rem;
+            }
+
+        }
+
+        #export {
+            background-color: transparent;
+            cursor: pointer;
+            margin: 0 2rem;
+
+            &:hover {
+                box-shadow: none;
+                color: $webGreen;
+            }
+        }
+    }
+
+
+
+    table {
+        padding: 1rem;
+        width: 100%;
+        margin: 0 auto;
+        height: inherit;
+        border-collapse: collapse;
+
+
+
+
+
+        th {
+            padding: 1rem 0;
+            color: #383838;
+            font-weight: 800;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.627);
+        }
+
+        tbody {
+            tr {
+                background-color: transparent;
+                border-bottom: solid 1px #d8d8d8;
+
+                &:first-child {
+                    background-color: transparent;
+                }
+
+                td {
+                    font-size: .9rem;
+                    padding: 0 .2rem;
+                    text-align: left;
+                    max-height: 50px !important;
+                    border-bottom: solid 1px #d8d8d8;
+                    border-left: 0;
+                    border-right: 0;
+                    white-space: nowrap;
+
+
+                }
+
+
+                ul {
+
+                    li {
+                        font-size: .6rem;
+                        text-align: left;
+                        margin: .5rem;
+                        padding: 0 .2rem;
+                        border-bottom: 1px solid $webDarkBlue;
+                        white-space: nowrap;
+
+                        &.shiftList:nth-child(n+4) {
+                            display: none;
+                        }
+
+                        &.show:nth-child(n+4),
+                        &~ul {
+                            display: flex;
+                        }
+                    }
+                }
+
+                a {
+                    color: white;
+                    cursor: pointer;
+                    font-size: .6rem;
+                    float: right;
+                    padding-bottom: .3rem;
+                }
+
+                // table btns
+                span {
+                    cursor: pointer;
+                    transition: .2s ease;
+
+                    // edit, delete and add btns in table 
+                    &.tableBtnEdit,
+                    &.tableBtnDelete,
+                    &.tableBtnAdd {
+                        font-size: 1.5rem;
+                    }
+
+                    &:hover {
+                        color: white;
+                    }
+
+                    .employee {
+                        font-size: 1rem;
+                    }
+                }
+
+                button {
+                    width: fit-content;
+                    font-size: .7rem;
+                }
+
+            }
+
+        }
+
+
+
+    }
+
+}
+
+// --------------------------------------------------- edit department -------------------------------- \\
+
+
+
+.edit-container {
+    margin: .5rem auto;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(219, 219, 219);
+    padding: 1rem;
+    border-radius: .6rem;
+
+
+    svg {
+        font-size: 2rem;
+        margin: 1rem;
+        color: $webGreen;
+        opacity: .6;
+    }
+
+    img {
+        border-radius: 50% 50%;
+        height: 80px;
+        width: 80px;
+        margin: 1rem auto;
+
+    }
+
+    h2 {
+        text-align: center;
+        color: white;
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+    }
+
+    input {
+        border: none;
+        border-radius: .3rem;
+        padding: .3rem;
+        width: 100%;
+        margin: .3rem 0;
+        font-weight: 400;
+    }
+
+    select {
+        border: none;
+        border-radius: .3rem;
+        padding: .3rem;
+        font-size: .9rem;
+
+        option {
+            font-size: .9rem;
+            border: none;
+            border-radius: .3rem;
+
+            &:hover {
+                cursor: pointer;
+                background-color: #515151;
+            }
+        }
+    }
+
+    label {
+        text-align: left !important;
+        font-size: .7rem;
+        color: #515151;
+    }
+
+    button {
+        margin: .5rem;
+        width: 90%;
+
+
+    }
+
+}
+
+.btns-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5rem;
+    gap: 1rem;
+
+    button {
+        text-align: center;
+
+        span {
+            font-size: 1.4rem;
+            color: $webGreen;
+        }
+    }
+
+    svg {
+        float: left;
+        font-size: .9rem;
+        color: white;
+    }
+}
+
+// ---------------------------------------------------------------- employees page ---------------------------------------------------------------- \\
+
+// ---------------------------------------------------------------- add shift to employees page ---------------------------------------------------------------- \\
+
+.small {
+    padding: 0;
+    font-size: .7rem;
+    border-radius: 0;
+    background-color: transparent;
+
+    &:hover {
+        color: #00337C;
+        background-color: transparent;
+        box-shadow: none;
+    }
+}
+
+// ---------------------------------------------------------------- Add Shift ---------------------------------------------------------------- \\
+
+// label{
+//     color: white;
+//     font-size: 1.2rem;
+// }
+// input, select{
+//     padding: .5rem;
+//     border: none;
+//     border-radius: 1rem;
+//     outline: none;
+// }
+
+
+
+// ---------------------------------------------------------------- DASHBOARD HOME PAGE ---------------------------------------------------------------- \\
+#piechart {
+    fill: transparent;
+}
+
+
+.feedback {
+    width: 400px;
+    height: 200px;
+    background-color: rgb(210, 210, 210);
+    position: absolute;
+    left: 0;
+    top: 10%;
+    display: none;
+    transform: translateX(-500px);
+    color: rgb(61, 61, 61);
+    padding: 1rem;
+    border-radius: .5rem;
+
+    &.active {
+        display: flex;
+        animation: fromLeft 8s ease-in-out;
+
+        @keyframes fromLeft {
+
+            0% {}
+
+            50% {
+                transform: translateX(300px);
+            }
+        }
+    }
+}

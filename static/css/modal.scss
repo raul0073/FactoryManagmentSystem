@@ -1,0 +1,46 @@
+// web colors and variables
+$webGreen: #03C988;
+$webSecondaryLightBlue: #1C82AD;
+$webBlue:#00337C;
+$webDarkBlue:#13005A;
+
+.modal{
+    position: absolute;
+    width:0px;
+    height: 10%;
+    top:40%;
+    left: -1%;
+    background-color: white;
+    color: $webSecondaryLightBlue;
+    font-size: 2rem;
+    border-radius: .5rem;
+    
+    &.animate{
+        position: absolute;
+        width:0px;
+        height: 10%;
+        top:40%;
+        left: -1%;
+        background-color: white;
+        font-size: 1rem;
+        border-radius: .5rem;
+        display: block;
+        animation: styleinAndOut 6s ease forwards;
+
+    @keyframes styleinAndOut {
+        from{
+         width: 300px;
+        }
+        to{
+            transform: translateX(-600px);
+            opacity: 0;
+        }
+     }
+    }
+
+    h3{
+        text-align: center;
+    }
+
+}
+
